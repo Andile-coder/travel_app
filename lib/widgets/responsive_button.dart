@@ -29,31 +29,34 @@ class ResponsiveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Flexible(
-      child: Container(
-        width: isResponsive ? double.maxFinite : width,
-        height: 60,
-        decoration: BoxDecoration(
-          color: AppColors.mainColor,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Row(
-          mainAxisAlignment: isResponsive
-              ? MainAxisAlignment.spaceBetween
-              : MainAxisAlignment.center,
-          children: [
-            isResponsive
-                ? Container(
-                    margin: EdgeInsets.only(left: 20),
-                    child: AppText(
-                      text: "Book Trip Now",
-                      color: Colors.white,
-                    ),
-                  )
-                : Container(),
-            Image.asset(
-              'assets/images/button-one.png',
-            ),
-          ],
+      child: GestureDetector(
+        onTap: onPressed,
+        child: Container(
+          width: isResponsive ? double.maxFinite : width,
+          height: 60,
+          decoration: BoxDecoration(
+            color: AppColors.mainColor,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Row(
+            mainAxisAlignment: isResponsive
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.center,
+            children: [
+              isResponsive
+                  ? Container(
+                      margin: EdgeInsets.only(left: 20),
+                      child: AppText(
+                        text: "Book Trip Now",
+                        color: Colors.white,
+                      ),
+                    )
+                  : Container(),
+              Image.asset(
+                'assets/images/button-one.png',
+              ),
+            ],
+          ),
         ),
       ),
     );
