@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/misc/colors.dart';
+import 'package:travel_app/widgets/app_text.dart';
 
 class ResponsiveButton extends StatelessWidget {
   String? text;
@@ -16,7 +17,7 @@ class ResponsiveButton extends StatelessWidget {
     Key? key,
     this.text,
     this.isResponsive = false,
-    this.width,
+    this.width = 120,
     required this.onPressed,
     this.color = Colors.black,
     this.fontSize = 16,
@@ -27,20 +28,33 @@ class ResponsiveButton extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: 60,
-      decoration: BoxDecoration(
-        color: AppColors.mainColor,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            'assets/images/button-one.png',
-          ),
-        ],
+    return Flexible(
+      child: Container(
+        width: isResponsive ? double.maxFinite : width,
+        height: 60,
+        decoration: BoxDecoration(
+          color: AppColors.mainColor,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(
+          mainAxisAlignment: isResponsive
+              ? MainAxisAlignment.spaceBetween
+              : MainAxisAlignment.center,
+          children: [
+            isResponsive
+                ? Container(
+                    margin: EdgeInsets.only(left: 20),
+                    child: AppText(
+                      text: "Book Trip Now",
+                      color: Colors.white,
+                    ),
+                  )
+                : Container(),
+            Image.asset(
+              'assets/images/button-one.png',
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -12,7 +12,7 @@ class AppText extends StatelessWidget {
   const AppText({
     required this.text,
     this.color = Colors.black54,
-    this.fontSize = 16,
+    this.fontSize = 15,
     this.fontWeight = FontWeight.normal,
     this.textAlign = TextAlign.left,
     this.maxLines = 1,
